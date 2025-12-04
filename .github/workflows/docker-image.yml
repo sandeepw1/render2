@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       id: build-docker-image
-      run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USERNAME}}/actions-demo:$(date +%s)
+      run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USERNAME}}/actions-demo:latest
     - name: Login to DockerHub
       id: docker-hub
       env: 
@@ -24,5 +24,5 @@ jobs:
       run: docker login -u $username -p $password
     - name: Push Docker Image
       id: docker-push
-      run: docker push ${{secrets.DOCKER_USERNAME}}/actions-demo:$(date +%s)  
+      run: docker push ${{secrets.DOCKER_USERNAME}}/actions-demo:latest  
     
